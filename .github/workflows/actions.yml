@@ -62,4 +62,4 @@ jobs:
           mycredential = ${{ secrets.MYCREDENTIAL }}
           proxy_link = ${{ secrets.PROXY_LIST_LINK }}
           spreadsheet_link = ${{ secrets.SPREADSHEET_LINK }}
-        run: python collect-information.py
+        run: python keterbukaan-informasi.py
