@@ -1,14 +1,7 @@
 run-name: Collect Information  # Name of your workflow
 
 on: [push]
-
-env:
-  authorization_whapi: ${{ secrets.AUTHORIZATION_WHAPI }}
-  group_id: ${{ secrets.GROUP_ID }}
-  mycredential: ${{ secrets.MYCREDENTIAL }}
-  proxy_link: ${{ secrets.PROXY_LIST_LINK }}
-  spreadsheet_link: ${{ secrets.SPREADSHEET_LINK }}
-          
+         
 jobs:
   collect-information:
     runs-on: ubuntu-latest  # Specifies the type of machine the job will run on
@@ -45,9 +38,17 @@ jobs:
         run: sudo apt --fix-broken install -y
           
       - name: Install Required Module
+        env:
+          authorization_whapi: ${{ secrets.AUTHORIZATION_WHAPI }}
+          group_id: ${{ secrets.GROUP_ID }}
+          mycredential: ${{ secrets.MYCREDENTIAL }}
+          proxy_link: ${{ secrets.PROXY_LIST_LINK }}
+          spreadsheet_link: ${{ secrets.SPREADSHEET_LINK }}
         run: |
           python -m pip install --upgrade pip
           pip install undetected-chromedriver selenium selenium-wire selenium_authenticated_proxy selenium_stealth gspread gspread_dataframe tqdm oauth2client
 
       - name: Run Script
-        run: python keterbukaan-informasi.py
+        run: |
+          print(proxy_link)
+          python keterbukaan-informasi.py
