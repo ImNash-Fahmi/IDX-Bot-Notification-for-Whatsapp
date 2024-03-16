@@ -84,42 +84,10 @@ def send_messages(text):
 
 # %% [code] {"execution":{"iopub.status.busy":"2024-03-15T14:06:38.104444Z","iopub.execute_input":"2024-03-15T14:06:38.104933Z","iopub.status.idle":"2024-03-15T14:06:52.662109Z","shell.execute_reply.started":"2024-03-15T14:06:38.104887Z","shell.execute_reply":"2024-03-15T14:06:52.660920Z"},"jupyter":{"outputs_hidden":false}}
 #Initialize Webdriver w/ Proxies
-proxies = requests.get(.replace('"',""))
+proxies = requests.get(proxy_link.replace('"',""))
 
 proxies_text = proxies.text
 proxies_list = [proxy.split(':') for proxy in proxies_text.split('\r\n') if proxy]
-        
-selected_proxy = random.choice(proxies_list)
-proxy_url = f"http://{selected_proxy[2]}:{selected_proxy[3]}@{selected_proxy[0]}:{selected_proxy[1]}"
-
-#Create Connection
-options = uc.ChromeOptions()
-options.add_argument('--headless')
-options.add_argument('--no-sandbox')                             
-options.add_argument('--disable-dev-shm-usage')
-options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36')
-options.add_argument("--window-size=1920,1080")
-proxy_helper = SeleniumAuthenticatedProxy(proxy_url)
-proxy_helper.enrich_chrome_options(options)
-
-driver = uc.Chrome(use_subprocess=True,options=options)
-
-stealth(driver,
-        languages=["en-US", "en"],
-        vendor="Google Inc.",
-        platform="Win32",
-        webgl_vendor="Intel Inc.",
-        renderer="Intel Iris OpenGL Engine",
-        fix_hairline=True,
-        )
-
-url = "https://www.idx.co.id/id/perusahaan-tercatat/keterbukaan-informasi/"
-driver.get(url)
-
-time.sleep(3) #Wait 3 seconds for the website to display perfectly so we can get a screenshot in the next code
-  
-#Take a screenshot of the website and display it.
-Image.open(BytesIO(driver.get_screenshot_as_png()))
 
 # %% [code] {"execution":{"iopub.status.busy":"2024-03-15T15:16:03.872360Z","iopub.execute_input":"2024-03-15T15:16:03.872945Z","iopub.status.idle":"2024-03-15T15:16:04.542175Z","shell.execute_reply.started":"2024-03-15T15:16:03.872908Z","shell.execute_reply":"2024-03-15T15:16:04.540812Z"},"jupyter":{"outputs_hidden":false}}
 refresh_data = False
