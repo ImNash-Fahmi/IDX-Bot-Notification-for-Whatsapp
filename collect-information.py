@@ -40,18 +40,6 @@ chrome_version
 #Fix any broken dependencies that might occur during the installation process
 !sudo apt --fix-broken install -y
 
-#Install undetected chromedriver
-!pip3 install undetected-chromedriver
-
-#Install Packages
-!pip3 install selenium\
-selenium-wire\
-selenium_authenticated_proxy\
-selenium_stealth\
-gspread\
-gspread_dataframe\
-yfinance
-
 from seleniumwire import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
