@@ -1,4 +1,4 @@
-name: Collect Information  # Name of your workflow
+run-name: Collect Information  # Name of your workflow
 
 on:
   schedule:
