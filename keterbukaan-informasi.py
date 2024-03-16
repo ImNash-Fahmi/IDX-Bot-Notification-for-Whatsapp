@@ -23,7 +23,6 @@ import datetime
 import os
 import requests
 from tqdm.auto import tqdm
-from kaggle_secrets import UserSecretsClient
 from oauth2client.service_account import ServiceAccountCredentials
 import json
 import gspread
