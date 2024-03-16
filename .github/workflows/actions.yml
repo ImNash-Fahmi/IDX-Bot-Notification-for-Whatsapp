@@ -16,7 +16,8 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@v2  # Checks out your repository's code
-           - name: Update apt-get
+        
+      - name: Update apt-get
         run: sudo apt-get update -y
   
       - name: Install Required Libraries
