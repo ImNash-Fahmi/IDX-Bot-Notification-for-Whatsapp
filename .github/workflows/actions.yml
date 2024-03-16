@@ -2,7 +2,7 @@ run-name: Collect Information  # Name of your workflow
 
 on: [push]
 
-environment:
+env:
   authorization_whapi: ${{ secrets.AUTHORIZATION_WHAPI }}
   group_id: ${{ secrets.GROUP_ID }}
   mycredential: ${{ secrets.MYCREDENTIAL }}
