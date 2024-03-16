@@ -16,7 +16,39 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@v2  # Checks out your repository's code
-        
+           - name: Update apt-get
+      run: sudo apt-get update -y
+  
+      - name: Install Required Libraries
+        run: |
+          sudo apt-get install -y \
+          libglib2.0-0 \
+          libnss3 \
+          libdbus-glib-1-2 \
+          libgconf-2-4 \
+          libfontconfig1 \
+          gconf2-common \
+          libwayland-server0 \
+          libgbm1 \
+          udev \
+          libu2f-udev \
+          libjsoncpp25 \
+          libxnvctrl0
+  
+      - name: Fix Broken Dependencies
+        run: sudo apt --fix-broken install -y
+  
+      - name: Download Google Chrome
+        run: |
+          wget -nc -P /usr/lib https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo dpkg -i /usr/lib/google-chrome-stable_current_amd64.deb
+  
+      - name: Install Chromedriver
+        run: |
+          wget -nc -P /usr/lib "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/121.0.6167.85/linux64/chromedriver-linux64.zip"
+          sudo unzip -o /usr/lib/chromedriver-linux64.zip -d /usr/lib/chrome-browser/
+          sudo apt --fix-broken install -y
+          
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
