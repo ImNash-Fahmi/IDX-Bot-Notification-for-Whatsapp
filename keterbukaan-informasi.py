@@ -71,20 +71,20 @@ def send_messages(text):
 
     payload = {
         "typing_time": 0,
-        "to": "120363263203377737@g.us",
+        "to": group_id,
         "body": text
     }
     headers = {
         "accept": "application/json",
         "content-type": "application/json",
-        "authorization": "Bearer rQvLvlThc7outCPAEot0PVj5AYpm1xuA"
+        "authorization": authorization_whapi
     }
 
     response = requests.post(url, json=payload, headers=headers)
 
 # %% [code] {"execution":{"iopub.status.busy":"2024-03-15T14:06:38.104444Z","iopub.execute_input":"2024-03-15T14:06:38.104933Z","iopub.status.idle":"2024-03-15T14:06:52.662109Z","shell.execute_reply.started":"2024-03-15T14:06:38.104887Z","shell.execute_reply":"2024-03-15T14:06:52.660920Z"},"jupyter":{"outputs_hidden":false}}
 #Initialize Webdriver w/ Proxies
-proxies = requests.get(UserSecretsClient().get_secret("Proxy_List_Link_4").replace('"',""))
+proxies = requests.get(.replace('"',""))
 
 proxies_text = proxies.text
 proxies_list = [proxy.split(':') for proxy in proxies_text.split('\r\n') if proxy]
@@ -135,7 +135,7 @@ database = {key: [] for key in keylist}
 timeout=60
 break_switch=False
 
-proxies = requests.get(UserSecretsClient().get_secret("Proxy_List_Link_4").replace('"',""))
+proxies = requests.get(proxy_link.replace('"',""))
 
 proxies_text = proxies.text
 proxies_list = [proxy.split(':') for proxy in proxies_text.split('\r\n') if proxy]
@@ -276,8 +276,8 @@ table.to_csv("Keterbukaan Informasi.csv",
 
 # %% [code] {"execution":{"iopub.status.busy":"2024-03-15T05:06:37.314825Z","iopub.execute_input":"2024-03-15T05:06:37.315169Z","iopub.status.idle":"2024-03-15T05:06:40.114027Z","shell.execute_reply.started":"2024-03-15T05:06:37.315141Z","shell.execute_reply":"2024-03-15T05:06:40.112837Z"},"jupyter":{"outputs_hidden":false}}
 #Save DataFrame to Google Spreadsheets
-credential = ServiceAccountCredentials.from_json_keyfile_dict(json.loads(UserSecretsClient().get_secret("mycredential")))
+credential = ServiceAccountCredentials.from_json_keyfile_dict(json.loads(mycredential))
 gc = gspread.authorize(credential)
 
-spreadsheet = gc.open_by_url(UserSecretsClient().get_secret("spreadsheet_link"))
+spreadsheet = gc.open_by_url(spreadsheet_link)
 set_with_dataframe(spreadsheet.worksheet('Keterbukaan Informasi'), table)
