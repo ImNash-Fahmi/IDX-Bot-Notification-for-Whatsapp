@@ -1,3 +1,11 @@
+#Secret
+import os
+authorization_whapi = os.environ['authorization_whapi']
+group_id = os.environ['group_id']
+mycredential = os.environ['mycredential']
+proxy_link = os.environ['proxy_link']
+spreadsheet_link = os.environ['spreadsheet_link']
+
 from seleniumwire import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
