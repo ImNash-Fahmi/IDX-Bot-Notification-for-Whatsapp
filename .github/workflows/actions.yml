@@ -50,5 +50,4 @@ jobs:
           proxy_link: ${{ secrets.PROXY_LIST_LINK }}
           spreadsheet_link: ${{ secrets.SPREADSHEET_LINK }}
         run: |
-         echo "Using API key in script: $proxy_link"
          python keterbukaan-informasi.py
