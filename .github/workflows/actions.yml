@@ -38,6 +38,11 @@ jobs:
         run: sudo apt --fix-broken install -y
           
       - name: Install Required Module
+        run: |
+          python -m pip install --upgrade pip
+          pip install undetected-chromedriver selenium selenium-wire selenium_authenticated_proxy selenium_stealth gspread gspread_dataframe tqdm oauth2client
+
+      - name: Run Script
         env:
           authorization_whapi: ${{ secrets.AUTHORIZATION_WHAPI }}
           group_id: ${{ secrets.GROUP_ID }}
@@ -45,10 +50,5 @@ jobs:
           proxy_link: ${{ secrets.PROXY_LIST_LINK }}
           spreadsheet_link: ${{ secrets.SPREADSHEET_LINK }}
         run: |
-          python -m pip install --upgrade pip
-          pip install undetected-chromedriver selenium selenium-wire selenium_authenticated_proxy selenium_stealth gspread gspread_dataframe tqdm oauth2client
-
-      - name: Run Script
-        run: |
-          echo proxy_link
-          python keterbukaan-informasi.py
+         echo "Using API key in script: $proxy_link"
+         python keterbukaan-informasi.py
