@@ -1,8 +1,6 @@
 run-name: Collect Information  # Name of your workflow
 
-on:
-  schedule:
-    - cron: '0 0 * * *'  # Runs the workflow daily at midnight
+on: [push]
 
 jobs:
   collect-information:
