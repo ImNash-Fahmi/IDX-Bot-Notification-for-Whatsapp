@@ -43,7 +43,7 @@ jobs:
           pip install undetected-chromedriver selenium selenium-wire selenium_authenticated_proxy selenium_stealth gspread gspread_dataframe tqdm oauth2client
 
       - name: Run Script
-        env:
+        with:
           authorization_whapi: ${{ secrets.AUTHORIZATION_WHAPI }}
           group_id: ${{ secrets.GROUP_ID }}
           mycredential: ${{ secrets.MYCREDENTIAL }}
