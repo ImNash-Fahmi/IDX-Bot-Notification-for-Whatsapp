@@ -1,4 +1,4 @@
-name: Collect-Information  # Name of your workflow
+name: Collect Information  # Name of your workflow
 
 on:
   schedule:
@@ -23,4 +23,4 @@ jobs:
           pip install pandas requests tqdm gspread oauth2client selenium chromedriver_autoinstaller
 
       - name: Run Python script
-        run: python your_script.py  # Replace `your_script.py` with the name of your Python script
+        run: python collect-information.py  # Replace `your_script.py` with the name of your Python script
