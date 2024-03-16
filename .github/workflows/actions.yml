@@ -50,5 +50,5 @@ jobs:
 
       - name: Run Script
         run: |
-          print(proxy_link)
+          echo proxy_link
           python keterbukaan-informasi.py
