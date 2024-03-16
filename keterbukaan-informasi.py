@@ -15,7 +15,6 @@ import random
 import undetected_chromedriver as uc
 import re
 import pandas as pd
-from PIL import Image
 import sys
 import numpy as np
 import time
