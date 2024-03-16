@@ -36,17 +36,6 @@ jobs:
   
       - name: Fix Broken Dependencies
         run: sudo apt --fix-broken install -y
-  
-      - name: Download Google Chrome
-        run: |
-          wget -nc -P /usr/lib https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo dpkg -i /usr/lib/google-chrome-stable_current_amd64.deb
-  
-      - name: Install Chromedriver
-        run: |
-          wget -nc -P /usr/lib "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/121.0.6167.85/linux64/chromedriver-linux64.zip"
-          sudo unzip -o /usr/lib/chromedriver-linux64.zip -d /usr/lib/chrome-browser/
-          sudo apt --fix-broken install -y
           
       - name: Install dependencies
         run: |
@@ -54,10 +43,4 @@ jobs:
           pip install undetected-chromedriver selenium selenium-wire selenium_authenticated_proxy selenium_stealth gspread gspread_dataframe yfinance
 
       - name: Run Python script
-        env:
-          authorization_whapi = ${{ secrets.AUTHORIZATION_WHAPI }}
-          group_id = ${{ secrets.GROUP_ID }}
-          mycredential = ${{ secrets.MYCREDENTIAL }}
-          proxy_link = ${{ secrets.PROXY_LIST_LINK }}
-          spreadsheet_link = ${{ secrets.SPREADSHEET_LINK }}
         run: python keterbukaan-informasi.py
