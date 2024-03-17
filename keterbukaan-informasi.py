@@ -103,7 +103,6 @@ proxies_list = [proxy.split(':') for proxy in proxies_text.split('\r\n') if prox
 refresh_data = False
 
 if not refresh_data:
-    ZipFile("keterbukaan-informasi-idx.zip", 'r').extractall()
     dataset = pd.read_csv("Keterbukaan Informasi.csv")
     dataset['Date'].apply(timestamp)
 
