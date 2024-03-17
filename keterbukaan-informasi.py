@@ -181,11 +181,11 @@ with tqdm(desc="Information Collected (on Process: ...)", unit=" items") as prog
                     progress.set_description(f"Information Collected (on Process: {date_item}). Page {page}")
                     for key,new_value in zip(database.keys(), [date_item, title_item, link_item]):
                         if refresh_data:
-                            if date_item < pd.to_datetime('2024-03-01 00:00:00',format='%Y-%m-%d %H:%M:%S'):
+                            if date_item <= pd.to_datetime('2024-03-01 00:00:00',format='%Y-%m-%d %H:%M:%S'):
                                 trash+=1
                                 continue
                         else:
-                            if date_item < pd.to_datetime(dataset.iloc[0].iloc[0],format='%Y-%m-%d %H:%M:%S'): #ganti tanggalnya
+                            if date_item <= pd.to_datetime(dataset.iloc[0].iloc[0],format='%Y-%m-%d %H:%M:%S'):
                                 trash+=1
                                 continue
                         database[key].append(new_value)
