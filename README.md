@@ -13,3 +13,5 @@ Script ini berguna untuk memberikan notifikasi pesan melalui Whatsapp apabila te
 9. Daftar Efek Bersifat Ekuitas Dalam Pemantauan Khusus
 10. Penambahan Modal
 11. Transaksi Afiliasi
+
+Script berjalan setiap 5 Menit
