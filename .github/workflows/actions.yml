@@ -1,6 +1,9 @@
 run-name: Collect Information  # Name of your workflow
 
-on: [push]
+on:
+  schedule:
+    # Runs at 8:20am UTC every day (see https://crontab.guru)
+    - cron: '*/5 * * * *'
          
 jobs:
   collect-information:
