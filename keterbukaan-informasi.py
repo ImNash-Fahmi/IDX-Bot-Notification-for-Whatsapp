@@ -1,46 +1,46 @@
-         #Secret
-         import os
-         authorization_whapi = os.environ['authorization_whapi']
- group_id = os.environ['group_id']
- mycredential = os.environ['mycredential']
- proxy_link = os.environ['proxy_link']
- spreadsheet_link = os.environ['spreadsheet_link']
- 
- from seleniumwire import webdriver
- from selenium.webdriver.common.by import By
- from selenium.common.exceptions import TimeoutException
- from selenium.webdriver.support.ui import WebDriverWait
- from selenium.webdriver.support import expected_conditions as EC
- from selenium.webdriver import ChromeOptions
- from selenium.webdriver.chrome.service import Service
- from selenium.common.exceptions import NoSuchElementException
- from selenium.common.exceptions import InvalidSelectorException
- from selenium.webdriver.common.keys import Keys
- from selenium_stealth import stealth
- from selenium_authenticated_proxy import SeleniumAuthenticatedProxy
- from selenium.webdriver.support.ui import Select
- import random
- import undetected_chromedriver as uc
- import re
- import pandas as pd
- import sys
- import numpy as np
- import time
- from io import BytesIO
- import datetime
- import os
- import requests
- from tqdm.auto import tqdm
- from oauth2client.service_account import ServiceAccountCredentials
- import json
- import gspread
- import math
- from gspread_dataframe import set_with_dataframe
- from zipfile import ZipFile
- import kaggle
- sys.path.insert(0,'/usr/lib/chrome-browser/chromedriver')
- pd.set_option('display.max_columns', None)
- pd.set_option('display.precision', 4)
+#Secret
+import os
+authorization_whapi = os.environ['authorization_whapi']
+group_id = os.environ['group_id']
+mycredential = os.environ['mycredential']
+proxy_link = os.environ['proxy_link']
+spreadsheet_link = os.environ['spreadsheet_link']
+
+from seleniumwire import webdriver
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver import ChromeOptions
+from selenium.webdriver.chrome.service import Service
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import InvalidSelectorException
+from selenium.webdriver.common.keys import Keys
+from selenium_stealth import stealth
+from selenium_authenticated_proxy import SeleniumAuthenticatedProxy
+from selenium.webdriver.support.ui import Select
+import random
+import undetected_chromedriver as uc
+import re
+import pandas as pd
+import sys
+import numpy as np
+import time
+from io import BytesIO
+import datetime
+import os
+import requests
+from tqdm.auto import tqdm
+from oauth2client.service_account import ServiceAccountCredentials
+import json
+import gspread
+import math
+from gspread_dataframe import set_with_dataframe
+from zipfile import ZipFile
+import kaggle
+sys.path.insert(0,'/usr/lib/chrome-browser/chromedriver')
+pd.set_option('display.max_columns', None)
+pd.set_option('display.precision', 4)
 
 # %% [code] {"execution":{"iopub.status.busy":"2024-03-15T14:06:38.089712Z","iopub.execute_input":"2024-03-15T14:06:38.090581Z","iopub.status.idle":"2024-03-15T14:06:38.102669Z","shell.execute_reply.started":"2024-03-15T14:06:38.090536Z","shell.execute_reply":"2024-03-15T14:06:38.101155Z"},"jupyter":{"outputs_hidden":false}}
 def timestamp(date_value):
