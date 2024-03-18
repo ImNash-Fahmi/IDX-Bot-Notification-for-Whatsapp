@@ -243,7 +243,7 @@ Tanggal: {row[1]}\n\nJudul: {row[2]}\n\nLink: {row[3]}
 
 # %% [code] {"execution":{"iopub.status.busy":"2024-03-15T15:18:33.168917Z","iopub.execute_input":"2024-03-15T15:18:33.169385Z","iopub.status.idle":"2024-03-15T15:18:33.185762Z","shell.execute_reply.started":"2024-03-15T15:18:33.169352Z","shell.execute_reply":"2024-03-15T15:18:33.184820Z"},"jupyter":{"outputs_hidden":false}}
 if not refresh_data:
-    table = pd.concat([table[:-1], dataset], ignore_index=True)    
+    table = pd.concat([table, dataset], ignore_index=True)    
 table
 
 # %% [code] {"execution":{"iopub.status.busy":"2024-03-15T05:06:37.296911Z","iopub.execute_input":"2024-03-15T05:06:37.297254Z","iopub.status.idle":"2024-03-15T05:06:37.313249Z","shell.execute_reply.started":"2024-03-15T05:06:37.297227Z","shell.execute_reply":"2024-03-15T05:06:37.311876Z"},"jupyter":{"outputs_hidden":false}}
