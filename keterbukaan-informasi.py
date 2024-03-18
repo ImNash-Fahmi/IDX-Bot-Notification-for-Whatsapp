@@ -233,7 +233,8 @@ def check_keywords(text, keywords):
             return True
     return False
 
-filtered_table = table[table['Title'].apply(lambda x: check_keywords(x, keywords))]; filtered_table
+filtered_table = table[table['Title'].apply(lambda x: check_keywords(x, keywords))]
+print(filtered_table)
 
 # %% [code] {"execution":{"iopub.status.busy":"2024-03-15T15:02:52.844417Z","iopub.execute_input":"2024-03-15T15:02:52.844932Z","iopub.status.idle":"2024-03-15T15:02:54.207800Z","shell.execute_reply.started":"2024-03-15T15:02:52.844894Z","shell.execute_reply":"2024-03-15T15:02:54.206798Z"},"jupyter":{"outputs_hidden":false}}
 for row in filtered_table.itertuples():
