@@ -1,6 +1,9 @@
 run-name: Collect Information  # Name of your workflow
 
-on: [push]
+on:
+  push:
+  schedule:
+    - cron: '*/5 * * * *'
          
 jobs:
   collect-information:
