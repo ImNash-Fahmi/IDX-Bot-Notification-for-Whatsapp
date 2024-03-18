@@ -60,12 +60,16 @@ jobs:
         run: |
          python keterbukaan-informasi.py
 
-      - name: Update CSV File
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Configure Git
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          
+      - name: Update CSV File
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: '!git status --porcelain'
+        run: |
           git add .
           git commit -m "Update CSV file"
           git push
