@@ -69,11 +69,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if git status --porcelain; then
-            git add .
-            git commit -m "Update CSV file"
-            git push
-          else
-            echo "No changes detected, skipping commit."
-          fi
-
+          diff -q Keterbukaan Informasi.csv Dataset/Keterbukaan Informasi.csv > /dev/null || cp Dataset/Keterbukaan Informasi.csv Keterbukaan Informasi.csv
+          git add Keterbukaan Informasi.csv
+          git commit -m "Update CSV data" || echo "No changes to commit"
