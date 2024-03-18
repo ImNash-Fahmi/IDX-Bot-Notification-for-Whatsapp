@@ -67,6 +67,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          diff -q Keterbukaan Informasi.csv Dataset/Keterbukaan Informasi.csv > /dev/null || cp Dataset/Keterbukaan Informasi.csv Keterbukaan Informasi.csv
-          git add Keterbukaan Informasi.csv
-          git commit -m "Update CSV data" || echo "No changes to commit"
+         diff -q "Keterbukaan Informasi.csv" "Dataset/Keterbukaan Informasi.csv" > /dev/null || cp "Dataset/Keterbukaan Informasi.csv" "Keterbukaan Informasi.csv"
+         git add "Keterbukaan Informasi.csv"
+         git commit -m "Update CSV data" || echo "No changes to commit"
