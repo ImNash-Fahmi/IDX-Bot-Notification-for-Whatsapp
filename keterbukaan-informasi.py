@@ -248,8 +248,7 @@ table
 
 # %% [code] {"execution":{"iopub.status.busy":"2024-03-15T05:06:37.296911Z","iopub.execute_input":"2024-03-15T05:06:37.297254Z","iopub.status.idle":"2024-03-15T05:06:37.313249Z","shell.execute_reply.started":"2024-03-15T05:06:37.297227Z","shell.execute_reply":"2024-03-15T05:06:37.311876Z"},"jupyter":{"outputs_hidden":false}}
 #Save DataFrame to excel
-table.to_csv("Keterbukaan Informasi.csv",
-             filepath="../Dataset"
+table.to_csv("../Dataset/Keterbukaan Informasi.csv",
              date_format='%Y-%m-%d %H:%M:%S',
              index=False)
 
