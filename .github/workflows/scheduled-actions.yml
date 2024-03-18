@@ -67,6 +67,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-         diff -q "Keterbukaan Informasi.csv" "Dataset/Keterbukaan Informasi.csv" > /dev/null || cp "Dataset/Keterbukaan Informasi.csv" "Keterbukaan Informasi.csv"
-         git add "Keterbukaan Informasi.csv"
-         git commit -m "Update CSV data" || echo "No changes to commit"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Update CSV file"
+          git push
