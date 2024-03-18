@@ -103,7 +103,7 @@ proxies_list = [proxy.split(':') for proxy in proxies_text.split('\r\n') if prox
 refresh_data = False
 
 if not refresh_data:
-    dataset = pd.read_csv("../Dataset/Keterbukaan Informasi.csv")
+    dataset = pd.read_csv("Dataset/Keterbukaan Informasi.csv")
     dataset['Date'].apply(timestamp)
 
 # %% [code] {"execution":{"iopub.status.busy":"2024-03-15T14:11:02.961799Z","iopub.execute_input":"2024-03-15T14:11:02.963115Z","iopub.status.idle":"2024-03-15T14:11:26.959879Z","shell.execute_reply.started":"2024-03-15T14:11:02.963031Z","shell.execute_reply":"2024-03-15T14:11:26.958915Z"},"jupyter":{"outputs_hidden":false}}
@@ -248,7 +248,7 @@ table
 
 # %% [code] {"execution":{"iopub.status.busy":"2024-03-15T05:06:37.296911Z","iopub.execute_input":"2024-03-15T05:06:37.297254Z","iopub.status.idle":"2024-03-15T05:06:37.313249Z","shell.execute_reply.started":"2024-03-15T05:06:37.297227Z","shell.execute_reply":"2024-03-15T05:06:37.311876Z"},"jupyter":{"outputs_hidden":false}}
 #Save DataFrame to excel
-table.to_csv("../Dataset/Keterbukaan Informasi.csv",
+table.to_csv("Dataset/Keterbukaan Informasi.csv",
              date_format='%Y-%m-%d %H:%M:%S',
              index=False)
 
