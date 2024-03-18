@@ -154,53 +154,61 @@ with tqdm(desc="Information Collected (on Process: ...)", unit=" items") as prog
 
         url = "https://www.idx.co.id/id/perusahaan-tercatat/keterbukaan-informasi/"
 
-        driver.get(url)
-        WebDriverWait(driver, timeout).until(EC.presence_of_element_located((By.XPATH,"//*[@id='app']/div[2]/main/div/div/div[2]/span/ul/li[5]/button")))
-
-        next_button = driver.find_element(By.XPATH, "//*[@id='app']/div[2]/main/div/div/div[2]/span/ul/li[5]/button")
-        driver.execute_script("arguments[0].scrollIntoView();", next_button)
-
-        while trash<=30:
-            WebDriverWait(driver, timeout).until(EC.presence_of_element_located((By.XPATH,"//*[@id='app']/div[2]/main/div/div/div[2]/div[2]/div/div[1]")))
-            WebDriverWait(driver, timeout).until(EC.presence_of_element_located((By.XPATH,"//*[@id='app']/div[2]/main/div/div/div[2]/span/ul/li[1]/select")))
-
-            if resume_prompt:
-                dropdown = driver.find_element(By.XPATH, "//*[@id='app']/div[2]/main/div/div/div[2]/span/ul/li[1]/select")
-                Select(dropdown).select_by_value(page)
-                resume_prompt=False
-
-            page = driver.find_element(By.XPATH, "//*[@id='app']/div[2]/main/div/div/div[2]/span/ul/li[1]/select").get_attribute("value")
-            for i in range(10):
-                counter=0
+        try:
+            driver.get(url)
+            WebDriverWait(driver, timeout).until(EC.presence_of_element_located((By.XPATH,"//*[@id='app']/div[2]/main/div/div/div[2]/span/ul/li[5]/button")))
+    
+            next_button = driver.find_element(By.XPATH, "//*[@id='app']/div[2]/main/div/div/div[2]/span/ul/li[5]/button")
+            driver.execute_script("arguments[0].scrollIntoView();", next_button)
+    
+            while trash<=30:
                 WebDriverWait(driver, timeout).until(EC.presence_of_element_located((By.XPATH,"//*[@id='app']/div[2]/main/div/div/div[2]/div[2]/div/div[1]")))
-
-                date_item = timestamp(driver.find_element(By.XPATH, f"//*[@id='app']/div[2]/main/div/div/div[2]/div[2]/div/div[{i+1}]").text.split("\n")[0])
-                title_item = driver.find_element(By.XPATH, f"//*[@id='app']/div[2]/main/div/div/div[2]/div[2]/div/div[{i+1}]/h6/a").text
-                link_item = driver.find_element(By.XPATH, f"//*[@id='app']/div[2]/main/div/div/div[2]/div[2]/div/div[{i+1}]/h6/a").get_attribute('href')
-                progress.set_description(f"Information Collected (on Process: {date_item}). Page {page}")
-                for key,new_value in zip(database.keys(), [date_item, title_item, link_item]):
-                    if refresh_data:
-                        if date_item <= pd.to_datetime('2024-03-01 00:00:00',format='%Y-%m-%d %H:%M:%S'):
-                            trash+=1
-                            continue
-                    else:
-                        if date_item <= pd.to_datetime(dataset.iloc[0].iloc[0],format='%Y-%m-%d %H:%M:%S'):
-                            trash+=1
-                            continue
-                    database[key].append(new_value)
-                    counter+=(1/3)
-                    progress.update(math.floor(counter))
-
+                WebDriverWait(driver, timeout).until(EC.presence_of_element_located((By.XPATH,"//*[@id='app']/div[2]/main/div/div/div[2]/span/ul/li[1]/select")))
+    
+                if resume_prompt:
+                    dropdown = driver.find_element(By.XPATH, "//*[@id='app']/div[2]/main/div/div/div[2]/span/ul/li[1]/select")
+                    Select(dropdown).select_by_value(page)
+                    resume_prompt=False
+    
+                page = driver.find_element(By.XPATH, "//*[@id='app']/div[2]/main/div/div/div[2]/span/ul/li[1]/select").get_attribute("value")
+                for i in range(10):
+                    counter=0
+                    WebDriverWait(driver, timeout).until(EC.presence_of_element_located((By.XPATH,"//*[@id='app']/div[2]/main/div/div/div[2]/div[2]/div/div[1]")))
+    
+                    date_item = timestamp(driver.find_element(By.XPATH, f"//*[@id='app']/div[2]/main/div/div/div[2]/div[2]/div/div[{i+1}]").text.split("\n")[0])
+                    title_item = driver.find_element(By.XPATH, f"//*[@id='app']/div[2]/main/div/div/div[2]/div[2]/div/div[{i+1}]/h6/a").text
+                    link_item = driver.find_element(By.XPATH, f"//*[@id='app']/div[2]/main/div/div/div[2]/div[2]/div/div[{i+1}]/h6/a").get_attribute('href')
+                    progress.set_description(f"Information Collected (on Process: {date_item}). Page {page}")
+                    for key,new_value in zip(database.keys(), [date_item, title_item, link_item]):
+                        if refresh_data:
+                            if date_item <= pd.to_datetime('2024-03-01 00:00:00',format='%Y-%m-%d %H:%M:%S'):
+                                trash+=1
+                                continue
+                        else:
+                            if date_item <= pd.to_datetime(dataset.iloc[0].iloc[0],format='%Y-%m-%d %H:%M:%S'):
+                                trash+=1
+                                continue
+                        database[key].append(new_value)
+                        counter+=(1/3)
+                        progress.update(math.floor(counter))
+    
+                    if break_switch:
+                        break    
+    
                 if break_switch:
-                    break    
-
+                    break
+    
+                next_button.click()
+    
             if break_switch:
                 break
-
-            next_button.click()
-
-        if break_switch:
-            break
+          
+        except:
+            print(f"Timeout. Attempt {attempt+1}...")
+            attempt+=1
+            driver.quit()
+            resume_prompt=True
+            continue
 
 # %% [code] {"execution":{"iopub.status.busy":"2024-03-15T14:12:00.239157Z","iopub.execute_input":"2024-03-15T14:12:00.239651Z","iopub.status.idle":"2024-03-15T14:12:00.259317Z","shell.execute_reply.started":"2024-03-15T14:12:00.239615Z","shell.execute_reply":"2024-03-15T14:12:00.257452Z"},"jupyter":{"outputs_hidden":false}}
 table = pd.DataFrame.from_dict(database); table
