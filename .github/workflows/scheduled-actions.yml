@@ -1,4 +1,4 @@
-name: Collect Information
+run-name: Collect Information  # Name of your workflow
 
 on:
   push:
@@ -6,18 +6,17 @@ on:
     - cron: '*/5 * * * *'
          
 jobs:
-  # Job for setting up environment and preparing dependencies
-  setup-and-prepare:
-    runs-on: ubuntu-latest
+  collect-information:
+    runs-on: ubuntu-latest  # Specifies the type of machine the job will run on
     
     steps:
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v2  # Sets up Python on the runner
         with:
-          python-version: '3.11' 
+          python-version: '3.11'  # Specifies the Python version to be used
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2  # Checks out your repository's code
         
       - name: Update apt-get
         run: sudo apt-get update -y
@@ -45,28 +44,13 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install undetected-chromedriver selenium selenium-wire selenium_authenticated_proxy selenium_stealth gspread gspread_dataframe tqdm oauth2client kaggle
-
-  # Job for configuration and authentication
-  configure-and-authenticate:
-    runs-on: ubuntu-latest
-    
-    steps:
+      
       - name: Setup Kaggle
         run: |
           mkdir $HOME/.kaggle
           echo '{"username":"${{ secrets.KAGGLE_USERNAME }}","key":"${{ secrets.KAGGLE_KEY }}"}' > $HOME/.kaggle/kaggle.json
           chmod 600 $HOME/.kaggle/kaggle.json
-
-      - name: Configure Git
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-
-  # Job for executing the script
-  execute-script:
-    runs-on: ubuntu-latest
-    
-    steps:
+      
       - name: Run Script
         env:
           authorization_whapi: ${{ secrets.AUTHORIZATION_WHAPI }}
@@ -76,12 +60,12 @@ jobs:
           spreadsheet_link: ${{ secrets.SPREADSHEET_LINK }}
         run: |
          python keterbukaan-informasi.py
-
-  # Job for post-execution actions
-  post-execution-actions:
-    runs-on: ubuntu-latest
-    
-    steps:
+         
+      - name: Configure Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
       - name: Update CSV File
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
