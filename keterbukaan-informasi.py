@@ -224,7 +224,8 @@ keywords = ['HMETD',
             'Restrukturisasi Utang',
             'Daftar Efek Bersifat Ekuitas Dalam Pemantauan Khusus',
             'Penambahan Modal',
-            'Transaksi Afiliasi']
+            'Transaksi Afiliasi',
+            'Perolehan atau kehilangan kontrak penting']
 
 blacklist = ['Bukti Iklan']
 
