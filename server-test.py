@@ -22,6 +22,6 @@ def send_messages(text):
     }
 
     response = requests.post(url, json=payload, headers=headers)
-    print(response)
+    print(response.text)
 
 send_messages("Server Test: Check")
