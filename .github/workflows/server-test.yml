@@ -1,0 +1,18 @@
+run-name: Collect Information  # Name of your workflow
+
+on: [push]
+         
+jobs:
+  collect-information:
+    runs-on: ubuntu-latest  # Specifies the type of machine the job will run on
+    
+    steps:
+      - name: Run Script
+        env:
+          authorization_whapi: ${{ secrets.AUTHORIZATION_WHAPI }}
+          group_id: ${{ secrets.GROUP_ID }}
+          mycredential: ${{ secrets.MYCREDENTIAL }}
+          proxy_link: ${{ secrets.PROXY_LIST_LINK }}
+          spreadsheet_link: ${{ secrets.SPREADSHEET_LINK }}
+        run: |
+         python server-test.py
