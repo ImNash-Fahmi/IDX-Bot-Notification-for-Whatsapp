@@ -11,14 +11,14 @@ def send_messages(text):
     url = "https://gate.whapi.cloud/messages/text"
 
     payload = {
-        "typing_time": 0,
-        "to": group_id,
+        "typing_time": 5,
+        "to": str(group_id),
         "body": text
     }
     headers = {
         "accept": "application/json",
         "content-type": "application/json",
-        "authorization": authorization_whapi
+        "authorization": str(authorization_whapi)
     }
 
     response = requests.post(url, json=payload, headers=headers)
