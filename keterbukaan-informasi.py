@@ -89,7 +89,7 @@ def send_messages(text):
     }
 
     response = requests.post(url, json=payload, headers=headers)
-    print(response)
+    print(response.text)
 
 # %% [code] {"execution":{"iopub.status.busy":"2024-03-15T14:06:38.104444Z","iopub.execute_input":"2024-03-15T14:06:38.104933Z","iopub.status.idle":"2024-03-15T14:06:52.662109Z","shell.execute_reply.started":"2024-03-15T14:06:38.104887Z","shell.execute_reply":"2024-03-15T14:06:52.660920Z"},"jupyter":{"outputs_hidden":false}}
 #Initialize Webdriver w/ Proxies
