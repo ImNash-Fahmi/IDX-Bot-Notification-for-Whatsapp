@@ -231,7 +231,7 @@ blacklist = ['Bukti Iklan']
 def check_keywords(text, keywords):
     for keyword in keywords:
         if keyword in text:
-            if blacklist in keywords:
+            if blacklist in text:
                 break
             return True
     return False
