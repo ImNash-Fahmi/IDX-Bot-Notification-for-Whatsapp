@@ -226,9 +226,13 @@ keywords = ['HMETD',
             'Penambahan Modal',
             'Transaksi Afiliasi']
 
+blacklist = ['Bukti Iklan']
+
 def check_keywords(text, keywords):
     for keyword in keywords:
         if keyword in text:
+            if blacklist in keywords:
+                break
             return True
     return False
 
