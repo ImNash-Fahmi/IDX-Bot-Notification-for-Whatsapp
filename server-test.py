@@ -9,19 +9,19 @@ spreadsheet_link = os.environ['spreadsheet_link']
 
 def send_messages(text):
     url = "https://gate.whapi.cloud/messages/text"
-
+    
     payload = {
-        "typing_time": 5,
-        "to": str(group_id),
+        "typing_time": 3,
+        "to": "120363263203377737@g.us",
         "body": text
     }
     headers = {
         "accept": "application/json",
         "content-type": "application/json",
-        "authorization": str(authorization_whapi)
+        "authorization": "Bearer rQvLvlThc7outCPAEot0PVj5AYpm1xuA"
     }
-
+    
     response = requests.post(url, json=payload, headers=headers)
     print(response.text)
 
-send_messages("Server Test: Check")
+send_messages("Workflow Test: Check")
