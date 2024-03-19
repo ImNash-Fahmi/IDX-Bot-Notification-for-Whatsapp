@@ -12,13 +12,13 @@ def send_messages(text):
     
     payload = {
         "typing_time": 3,
-        "to": "120363263203377737@g.us",
+        "to": group_id,
         "body": text
     }
     headers = {
         "accept": "application/json",
         "content-type": "application/json",
-        "authorization": "Bearer rQvLvlThc7outCPAEot0PVj5AYpm1xuA"
+        "authorization": authorization_whapi
     }
     
     response = requests.post(url, json=payload, headers=headers)
