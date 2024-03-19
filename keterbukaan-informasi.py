@@ -227,15 +227,10 @@ keywords = ['HMETD',
             'Transaksi Afiliasi',
             'Perolehan atau kehilangan kontrak penting']
 
-blacklist = ['Bukti Iklan']
+blacklists = ['Bukti Iklan']
 
-def check_keywords(text, keywords):
-    for keyword in keywords:
-        if keyword in text:
-            if blacklist in text:
-                break
-            return True
-    return False
+def check_keywords(text, keywords, blacklists):
+    return any(keyword in text for keyword in keywords) and not any(blacklist in text for blacklist in blacklists)
 
 filtered_table = table[table['Title'].apply(lambda x: check_keywords(x, keywords))]
 print(f'New Information: {len(table)} Data')
