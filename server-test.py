@@ -1,4 +1,6 @@
 import os
+import requests
+
 authorization_whapi = os.environ['authorization_whapi']
 group_id = os.environ['group_id']
 mycredential = os.environ['mycredential']
