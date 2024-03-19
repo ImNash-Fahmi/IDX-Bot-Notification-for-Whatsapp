@@ -14,7 +14,12 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@v2  # Checks out your repository's code
-        
+
+      - name: Install Required Module
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+          
       - name: Run Script
         env:
           authorization_whapi: ${{ secrets.AUTHORIZATION_WHAPI }}
