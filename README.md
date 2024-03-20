@@ -5,12 +5,17 @@ Script ini berguna untuk memberikan notifikasi pesan melalui Whatsapp apabila te
 2. PMTHMETD
 3. Penyampaian Informasi
 4. Transaksi Material
-5. Pengumuman RUPS
-6. Buyback
-7. Pembelian Kembali
-8. Restrukturisasi Utang
-9. Daftar Efek Bersifat Ekuitas Dalam Pemantauan Khusus
-10. Penambahan Modal
-11. Transaksi Afiliasi
+5. RUPS
+6. Rapat Umum
+7. Buyback
+8. Pembelian Kembali
+9. Restrukturisasi Utang
+10. Daftar Efek Bersifat Ekuitas Dalam Pemantauan Khusus
+11. Penambahan Modal
+12. Transaksi Afiliasi
+13. Perolehan atau kehilangan kontrak penting
+
+Dengan pengecualian kata kunci sebagai berikut:
+1. Bukti Iklan
 
 Script berjalan setiap 5 Menit
