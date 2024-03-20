@@ -55,7 +55,7 @@ jobs:
           pip install undetected-chromedriver selenium selenium-wire selenium_authenticated_proxy selenium_stealth gspread gspread_dataframe tqdm oauth2client
 
   collect-information:
-    needs: run-script
+    needs: preparation
     runs-on: ubuntu-latest
     steps:
       - name: Run Script
