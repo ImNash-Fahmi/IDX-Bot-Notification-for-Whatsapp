@@ -41,13 +41,12 @@ jobs:
         run: sudo apt --fix-broken install -y
 
       - name: Install Google Chrome
-        uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: 123
-          
+        run: |
+          wget -nc -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo dpkg -i /tmp/google-chrome-stable_current_amd64.deb
+          sudo apt-get install -f
       - name: Check Chrome Version
-        uses: browser-actions/setup-chrome@v1
-        run: chrome --version
+        run: google-chrome --version
           
       - name: Install Required Module
         run: |
