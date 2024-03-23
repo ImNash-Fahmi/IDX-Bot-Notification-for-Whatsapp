@@ -48,7 +48,7 @@ jobs:
 
       - name: Check Path Chrome
         run: |
-          chrome_path = ${{ steps.setup-chrome.outputs.chrome-path }}
+          chrome_path=${{ steps.setup-chrome.outputs.chrome-path }}
           
       - name: Install Required Module
         run: |
