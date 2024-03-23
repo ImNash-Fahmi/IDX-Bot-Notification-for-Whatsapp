@@ -1,3 +1,5 @@
+notification = False
+
 #Secret
 import os
 authorization_whapi = os.environ['authorization_whapi']
@@ -237,11 +239,12 @@ print(f'New Information: {len(table)} Data')
 print(f'Filtered Information: {len(filtered_table)} Data')
 
 # %% [code] {"execution":{"iopub.status.busy":"2024-03-15T15:02:52.844417Z","iopub.execute_input":"2024-03-15T15:02:52.844932Z","iopub.status.idle":"2024-03-15T15:02:54.207800Z","shell.execute_reply.started":"2024-03-15T15:02:52.844894Z","shell.execute_reply":"2024-03-15T15:02:54.206798Z"},"jupyter":{"outputs_hidden":false}}
-for row in filtered_table.itertuples():
-    send_messages(f"""
-Tanggal: {row[1]}\n\nJudul: {row[2]}\n\nLink: {row[3]}
-""")
-    print("Information Sent")
+if notification:
+    for row in filtered_table.itertuples():
+        send_messages(f"""
+    Tanggal: {row[1]}\n\nJudul: {row[2]}\n\nLink: {row[3]}
+    """)
+        print("Information Sent")
 
 # %% [code] {"execution":{"iopub.status.busy":"2024-03-15T15:18:33.168917Z","iopub.execute_input":"2024-03-15T15:18:33.169385Z","iopub.status.idle":"2024-03-15T15:18:33.185762Z","shell.execute_reply.started":"2024-03-15T15:18:33.169352Z","shell.execute_reply":"2024-03-15T15:18:33.184820Z"},"jupyter":{"outputs_hidden":false}}
 if not refresh_data:
