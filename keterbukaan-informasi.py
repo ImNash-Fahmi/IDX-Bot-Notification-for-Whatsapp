@@ -1,4 +1,4 @@
-notification = False
+notification = True
 
 #Secret
 import os
