@@ -7,7 +7,7 @@ group_id = os.environ['group_id']
 mycredential = os.environ['mycredential']
 proxy_link = os.environ['proxy_link']
 spreadsheet_link = os.environ['spreadsheet_link']
-chrome_path = os.environ['chrome_path']
+chrome_path = os.environ.get['chrome_path']
 
 from seleniumwire import webdriver
 from selenium.webdriver.common.by import By
