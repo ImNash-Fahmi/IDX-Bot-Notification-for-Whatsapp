@@ -45,10 +45,6 @@ jobs:
 
       - name: Install Google Chrome  
         run: chrome --version
-
-      - name: Check Path Chrome
-        run: |
-          ${{ steps.setup-chrome.outputs.chrome-path }} --version
           
       - name: Install Required Module
         run: |
