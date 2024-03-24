@@ -1,4 +1,4 @@
-notification = True
+notification = False
 
 #Secret
 import os
@@ -142,7 +142,7 @@ with tqdm(desc="Information Collected (on Process: ...)", unit=" items") as prog
         proxy_helper = SeleniumAuthenticatedProxy(proxy_url)
         proxy_helper.enrich_chrome_options(options)
 
-        driver = uc.Chrome(use_subprocess=True, options=options)
+        driver = uc.Chrome(version_main=122, use_subprocess=True, options=options)
 
         stealth(driver,
                 languages=["en-US", "en"],
