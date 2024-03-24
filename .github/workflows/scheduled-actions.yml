@@ -3,7 +3,7 @@ run-name: Collect Information  # Name of your workflow
 on:
   push:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '* */1 * * *'
          
 jobs:
   collect-information:
