@@ -216,20 +216,9 @@ table = pd.DataFrame.from_dict(database); table
 
 # %% [code] {"execution":{"iopub.status.busy":"2024-03-15T14:54:30.611460Z","iopub.execute_input":"2024-03-15T14:54:30.611893Z","iopub.status.idle":"2024-03-15T14:54:30.628495Z","shell.execute_reply.started":"2024-03-15T14:54:30.611862Z","shell.execute_reply":"2024-03-15T14:54:30.627147Z"},"jupyter":{"outputs_hidden":false}}
 keywords = ['HMETD',
-            'PMTHMETD',
-            'Penyampaian Informasi',
-            'Transaksi Material',
-            'RUPS',
-            'Rapat Umum',
-            'Buyback',
-            'Pembelian Kembali',
-            'Restrukturisasi Utang',
-            'Daftar Efek Bersifat Ekuitas Dalam Pemantauan Khusus',
-            'Penambahan Modal',
-            'Transaksi Afiliasi',
-            'Perolehan atau kehilangan kontrak penting']
+            'PMTHMETD']
 
-blacklists = ['Bukti Iklan']
+blaclist = []
 
 def check_keywords(text, keywords, blacklists):
     return any(keyword in text for keyword in keywords) and not any(blacklist in text for blacklist in blacklists)
