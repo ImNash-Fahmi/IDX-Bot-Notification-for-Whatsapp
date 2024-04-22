@@ -204,8 +204,9 @@ with tqdm(desc="Information Collected (on Process: ...)", unit=" items") as prog
             if break_switch:
                 break
           
-        except:
-            print(f"Timeout. Attempt {attempt+1}...")
+        except Exception as error:
+            print(error)
+            print(f"Timeout:. Attempt {attempt+1}...")
             attempt+=1
             driver.quit()
             resume_prompt=True
